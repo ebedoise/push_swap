@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:07:34 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/16 17:52:20 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:59:47 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_stacks	solve4(t_stacks s);
 t_stacks	solve5(t_stacks s);
 t_stacks	bigsolver(t_stacks s);
 t_stacks	prepLIS(t_stacks s);
-t_stacks	LIS(t_stacks tmp, int *stack, int len);
+t_stacks	LIS(int *stack, int len);
 
 t_stacks	ft_fill(t_stacks s, char **av, int ac);
 t_stacks	ft_init2(int ac, char **av);

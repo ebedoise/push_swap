@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:16:06 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/16 18:20:22 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/16 19:45:50 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,15 @@ t_stacks	bigsolver(t_stacks s)
 	t_stacks	lis;
 	int	i;
 
-	i = 0;
+	i = s.len_a - 1;
 	lis = prepLIS(s);
-	while (i < s.len_a)
+	while (i >= 0)
 	{
-		if (!is_in_LIS(s.a[i], lis))
+		if (!is_in_LIS(s.a[s.len_a - 1], lis))
 			s = ft_putmove("pb\n", s, 5);
-		s = ft_putmove("ra\n", s, 6);
-		i++;
+		else
+			s = ft_putmove("ra\n", s, 6);
+		i--;
 	}
 	return (s);
 }
