@@ -1,4 +1,4 @@
-SRCS		= $(addprefix ${FOLDER}/, main.c parsing.c print.c ft_atoi.c ft_split.c ft_substr.c moves.c solver.c solve5.c bigsolver.c)
+SRCS		= $(addprefix ${FOLDER}/, main.c parsing.c print.c ft_atoi.c ft_split.c ft_substr.c moves.c solver.c solve5.c bigsolver.c LIS.c)
 OBJS		= ${SRCS:.c=.o}
 NAME		= push_swap
 FOLDER		= srcs

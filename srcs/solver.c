@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:07:45 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/10 18:43:39 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/16 14:56:24 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_stacks	solve2(t_stacks s)
 
 t_stacks	solve3(t_stacks s)
 {
-	if (s.a[0] < s.a[0] && s.a[0] < s.a[1])
+	if (s.a[0] < s.a[1] && s.a[0] > s.a[2])
 	{
 		s = ft_putmove("ra\n", s, 6);
 		s = ft_putmove("sa\n", s, 1);
