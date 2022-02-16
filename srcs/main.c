@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:02:23 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/10 18:38:40 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:15:04 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	main(int ac, char **av)
 	}
 	s = solver(s);
 
-/*	int i = s.len_a - 1;
+	int i = s.len_a - 1;
 
 	while (i >= 0)
 	{
@@ -110,7 +110,7 @@ int	main(int ac, char **av)
 		i--;
 	}
 	printf("--------\na     b\n");
-*/	free(s.a);
+	free(s.a);
 	free(s.b);
 	return (0);
 }
