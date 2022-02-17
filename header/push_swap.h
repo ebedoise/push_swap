@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:07:34 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/16 18:59:47 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/17 17:05:48 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	ft_putstr(char *str);
 int	print_error(void);
 
 int	*ft_cpy(int *tmp, int *a, int len);
+int	is_lowest(int *array, int len);
 
 t_stacks	solver(t_stacks s);
 t_stacks	solve2(t_stacks s);
@@ -54,6 +55,7 @@ t_stacks	solve5(t_stacks s);
 t_stacks	bigsolver(t_stacks s);
 t_stacks	prepLIS(t_stacks s);
 t_stacks	LIS(int *stack, int len);
+t_stacks	best_move(t_stacks s);
 
 t_stacks	ft_fill(t_stacks s, char **av, int ac);
 t_stacks	ft_init2(int ac, char **av);
