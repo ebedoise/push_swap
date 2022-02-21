@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 14:02:23 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/21 15:55:48 by embedois         ###   ########.fr       */
+/*   Created: 2022/02/21 18:43:31 by embedois          #+#    #+#             */
+/*   Updated: 2022/02/21 18:55:47 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_stacks	ft_init1(char **av)
 int	main(int ac, char **av)
 {
 	t_stacks	s;
+	int	i;
 
 	if (!parsing(ac, av))
 		return (0);
@@ -91,13 +92,6 @@ int	main(int ac, char **av)
 		s = ft_init2(ac, av);
 	if (!s.a || !s.b)
 		return (0);
-	if (is_sorted(s))
-	{
-		free(s.a);
-		free(s.b);
-		return (0);
-	}
-	s = solver(s);
 	free(s.a);
 	free(s.b);
 	return (0);
