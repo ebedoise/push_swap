@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:07:34 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/17 17:05:48 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:16:55 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int	parsing(int ac, char **av);
 int	is_int(char *str);
 int	is_list(char *str);
+int	is_in_lis(int n, t_stacks lis_var);
 int	is_sorted(t_stacks s);
 int	parse(int ac, char **av);
+int	biggest(t_stacks s);
+int	pos_in_a(t_stacks s, int n);
+int	ft_abs_moves(int a, int b);
+int	final_order(t_stacks s);
 
 t_stacks	ft_putmove(char *str, t_stacks s, int n);
 int	ft_putstr(char *str);
@@ -53,8 +58,8 @@ t_stacks	solve3(t_stacks s);
 t_stacks	solve4(t_stacks s);
 t_stacks	solve5(t_stacks s);
 t_stacks	bigsolver(t_stacks s);
-t_stacks	prepLIS(t_stacks s);
-t_stacks	LIS(int *stack, int len);
+t_stacks	prep_lis(t_stacks s);
+t_stacks	lis(int *stack, int len);
 t_stacks	best_move(t_stacks s);
 
 t_stacks	ft_fill(t_stacks s, char **av, int ac);

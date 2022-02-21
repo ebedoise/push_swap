@@ -6,89 +6,11 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:16:06 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/17 17:05:14 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:48:42 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
-
-int	is_in_LIS(int n, t_stacks lis)
-{
-	int	i;
-
-	i = 0;
-	while (i < lis.len_b)
-	{
-		if (n == lis.b[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	biggest(t_stacks s)
-{
-	int	i;
-	int	tmp;
-
-	i = s.len_a - 2;
-	tmp = i + 1;
-	while (i >= 0)
-	{
-		if (s.a[i] > s.a[tmp])
-			tmp = i;
-		i--;
-	}
-	if (tmp < s.len_a / 2)
-		return (tmp * -1);
-	else if (tmp >= s.len_a / 2)
-		return (s.len_a - tmp);
-	return (0);
-}
-
-int	pos_in_a(t_stacks s, int n)
-{
-	int	i;
-
-	i = 1;
-	if (n < s.a[s.len_a - 1] && n > s.a[0])
-		return (0);
-	while (s.len_a - i > s.len_a / 2)
-	{
-		if (n > s.a[s.len_a - i] && n < s.a[s.len_a - 1 - i])
-			return (i);
-		i++;
-	}
-	i = 1;
-	while (i < s.len_a / 2)
-	{
-		if (n < s.a[i - 1] && n > s.a[i])
-			return (i * -1);
-		i++;
-	}
-	return (biggest(s));
-}
-
-int	ft_abs_moves(int a, int b)
-{
-	if (a < 0 && b < 0)
-	{
-		if (a < b)
-			return (-a);
-		return (-b);
-	}
-	if (a > 0 && b > 0)
-	{
-		if (a > b)
-			return (a);
-		return (b);
-	}
-	if (a < 0)
-		a *= -1;
-	if (b < 0)
-		b *= -1;
-	return (a + b);
-}
 
 t_stacks	let_me_in(t_stacks s, int save[2])
 {
@@ -166,14 +88,14 @@ t_stacks	best_move(t_stacks s)
 
 t_stacks	bigsolver(t_stacks s)
 {
-	t_stacks	lis;
-	int	i;
+	t_stacks	lis_var;
+	int			i;
 
 	i = s.len_a - 1;
-	lis = prepLIS(s);
+	lis_var = prep_lis(s);
 	while (i >= 0)
 	{
-		if (!is_in_LIS(s.a[s.len_a - 1], lis))
+		if (!is_in_lis(s.a[s.len_a - 1], lis_var))
 			s = ft_putmove("pb\n", s, 5);
 		else
 			s = ft_putmove("ra\n", s, 6);
@@ -181,8 +103,15 @@ t_stacks	bigsolver(t_stacks s)
 	}
 	while (s.len_b != 0)
 		s = best_move(s);
-	//add if 2nd half rra
-	while (s.a[s.len_a - 1] != is_lowest(s.a, s.len_a))
-		s = ft_putmove("ra\n", s, 6);
+	if (final_order(s) == 1)
+	{
+		while (s.a[s.len_a - 1] != is_lowest(s.a, s.len_a))
+			s = ft_putmove("ra\n", s, 6);
+	}
+	else
+	{
+		while (s.a[s.len_a - 1] != is_lowest(s.a, s.len_a))
+			s = ft_putmove("rra\n", s, 9);
+	}
 	return (s);
 }

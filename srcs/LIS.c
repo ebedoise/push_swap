@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:08:48 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/16 19:45:58 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/21 16:17:45 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	is_lowest(int *array, int len)
 	return (tmp);
 }
 
-t_stacks	prepLIS(t_stacks s)
+t_stacks	prep_lis(t_stacks s)
 {
 	t_stacks	tmp_s;
-	int	*tmp;
-	int	i;
-	int	save;
+	int			*tmp;
+	int			i;
+	int			save;
 
 	tmp = malloc(sizeof(int) * s.len_a);
 	if (!tmp)
@@ -60,16 +60,16 @@ t_stacks	prepLIS(t_stacks s)
 			tmp[i] = tmp[i - 1];
 		tmp[i] = save;
 	}
-	tmp_s = LIS(tmp, s.len_a);
+	tmp_s = lis(tmp, s.len_a);
 	free(tmp);
 	return (tmp_s);
 }
 
-t_stacks	LIS(int *stack, int len)
+t_stacks	lis(int *stack, int len)
 {
 	t_stacks	tmp;
-	int	i;
-	int	j;
+	int			i;
+	int			j;
 
 	i = 0;
 	tmp.a = malloc(sizeof(int) * len);

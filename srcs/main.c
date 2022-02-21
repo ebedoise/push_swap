@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:02:23 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/17 17:59:46 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/21 15:55:48 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_stacks	ft_init2(int ac, char **av)
 
 t_stacks	ft_init1(char **av)
 {
-	char	**array;
+	char		**array;
 	t_stacks	s;
 
 	s.a = malloc(sizeof(int) * n_words(av[1], ' '));
@@ -98,19 +98,7 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	s = solver(s);
-	
-/*	int i = s.len_a - 1;
-
-	while (i >= 0)
-	{
-		if (i <= s.len_b - 1)
-			printf("%d  |  %d\n", s.a[i], s.b[i]);
-		else
-			printf("%d  |\n", s.a[i]);
-		i--;
-	}
-	printf("--------\na     b\n");
-*/	free(s.a);
+	free(s.a);
 	free(s.b);
 	return (0);
 }
