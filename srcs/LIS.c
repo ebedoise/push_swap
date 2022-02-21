@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:08:48 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/21 16:17:45 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/21 17:09:11 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,21 +65,11 @@ t_stacks	prep_lis(t_stacks s)
 	return (tmp_s);
 }
 
-t_stacks	lis(int *stack, int len)
+t_stacks	get_tmp(t_stacks tmp, int *stack, int len, int j)
 {
-	t_stacks	tmp;
-	int			i;
-	int			j;
+	int	i;
 
 	i = 0;
-	tmp.a = malloc(sizeof(int) * len);
-	if (!tmp.a)
-		return (tmp);
-	tmp.b = malloc(sizeof(int) * len);
-	if (!tmp.b)
-		return (tmp);
-	tmp.len_a = 1;
-	tmp.len_b = 0;
 	while (i < len)
 	{
 		tmp.a[0] = stack[i];
@@ -101,5 +91,23 @@ t_stacks	lis(int *stack, int len)
 		tmp.len_a = 1;
 		i++;
 	}
+	return (tmp);
+}
+
+t_stacks	lis(int *stack, int len)
+{
+	t_stacks	tmp;
+	int			j;
+
+	j = 0;
+	tmp.a = malloc(sizeof(int) * len);
+	if (!tmp.a)
+		return (tmp);
+	tmp.b = malloc(sizeof(int) * len);
+	if (!tmp.b)
+		return (tmp);
+	tmp.len_a = 1;
+	tmp.len_b = 0;
+	tmp = get_tmp(tmp, stack, len, j);
 	return (tmp);
 }
