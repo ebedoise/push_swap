@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 15:16:06 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/21 18:34:23 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/23 16:03:07 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,14 +116,12 @@ t_stacks	bigsolver(t_stacks s)
 	while (s.len_b != 0)
 		s = best_move(s);
 	if (final_order(s) == 1)
-	{
 		while (s.a[s.len_a - 1] != is_lowest(s.a, s.len_a))
 			s = ft_putmove("ra\n", s, 6);
-	}
 	else
-	{
 		while (s.a[s.len_a - 1] != is_lowest(s.a, s.len_a))
 			s = ft_putmove("rra\n", s, 9);
-	}
+	free(lis_var.a);
+	free(lis_var.b);
 	return (s);
 }
