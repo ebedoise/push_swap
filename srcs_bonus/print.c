@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:06:56 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/10 14:32:46 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/23 19:58:11 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ int	ft_putstr(char *str)
 
 int	print_error(void)
 {
-	ft_putstr("Error\n");
+	write(2, "Error\n", 6);
 	return (0);
 }

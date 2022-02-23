@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:43:31 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/23 16:07:39 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/22 15:32:59 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,12 @@ int	main(int ac, char **av)
 		s = ft_init2(ac, av);
 	if (!s.a || !s.b)
 		return (0);
+	if (!check_stdin(s))
+	{
+		free(s.a);
+		free(s.b);
+		return (print_error());
+	}
 	free(s.a);
 	free(s.b);
 	return (0);
