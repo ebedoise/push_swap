@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:43:31 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/22 15:32:59 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/23 20:34:04 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int ac, char **av)
 {
 	t_stacks	s;
 
-	if (!parsing(ac, av))
+	if (!parsing(ac, av) || (ac == 2 && av[1][0] == '\0'))
 		return (0);
 	if (ac == 2)
 		s = ft_init1(av);
