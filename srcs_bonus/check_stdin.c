@@ -6,7 +6,7 @@
 /*   By: embedois <embedois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:57:06 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/22 16:47:47 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/23 20:05:37 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,8 @@ int	check_stdin(t_stacks s)
 		if (car == -1)
 			return (0);
 	}
+	if (save[ft_strlen(save) - 1] != '\n')
+		return (0);
 	splited = ft_split(save, '\n');
 	if (!splited)
 	{

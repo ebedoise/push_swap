@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:07:34 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/23 16:07:08 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/23 20:10:32 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct s_stacks
 	int	len_a;
 	int	len_b;
 }	t_stacks;
+
+size_t		ft_strlen(char const *str);
 
 char		**ft_split(char const *s, char c);
 char		**ft_free_split(char **array, int j);
@@ -47,6 +49,8 @@ int			*ft_cpy(int *tmp, int *a, int len);
 int			is_lowest(int *array, int len);
 int			n_words(char const *s, char c);
 int			ft_atoi(const char *str);
+
+int			check_stdin(t_stacks s);
 
 t_stacks	solver(t_stacks s);
 t_stacks	solve2(t_stacks s);
