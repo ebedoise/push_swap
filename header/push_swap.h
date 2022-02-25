@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:07:34 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/25 13:07:08 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/25 14:15:32 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int			*ft_cpy(int *tmp, int *a, int len);
 int			is_lowest(int *array, int len);
 int			n_words(char const *s, char c);
 int			ft_atoi(const char *str);
+
+char		*ft_strjoin(char *s1, char *s2, size_t car);
 
 int			check_stdin(t_stacks s);
 int			ft_strcmp(char *s1, char *s2);

@@ -6,48 +6,11 @@
 /*   By: embedois <embedois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:57:06 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/25 13:51:14 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/25 14:29:28 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
-
-char	*ft_strjoin(char *s1, char *s2)
-{
-	int		i;
-	char	*array;
-
-	i = 0;
-	if (!s1)
-	{
-		array = malloc(sizeof(char) * (ft_strlen(s2) + 1));
-		if (!array)
-			return (NULL);
-		while (s2[i])
-		{
-			array[i] = s2[i];
-			i++;
-		}
-		array[i] = '\0';
-		return (array);
-	}
-	else
-		array = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!array)
-		return (NULL);
-	while (s1[i])
-	{
-		array[i] = s1[i];
-		i++;
-	}
-	while (s2[i - ft_strlen(s1)])
-	{
-		array[i] = s2[i - ft_strlen(s1)];
-		i++;
-	}
-	array[i] = '\0';
-	return (array);
-}
 
 t_stacks	resolve(t_stacks s, char *str)
 {
@@ -131,6 +94,21 @@ int	check_moves(t_stacks s, char **splited, char *save)
 	return (1);
 }
 
+char	*read_stdin(char *save, int car, char in[1000])
+{
+	car = read(STDOUT_FILENO, in, 1000);
+	if (car == -1)
+		return (NULL);
+	while (car)
+	{
+		save = ft_strjoin(save, in, car);
+		car = read(STDOUT_FILENO, in, 1000);
+		if (car == -1)
+			return (NULL);
+	}
+	return (save);
+}
+
 int	check_stdin(t_stacks s)
 {
 	char	in[1000];
@@ -138,20 +116,16 @@ int	check_stdin(t_stacks s)
 	char	*save;
 	char	**splited;
 
-	//MAC ?
 	save = malloc(sizeof(char));
 	if (!save)
 		return (0);
 	save[0] = '\0';
-	car = read(STDOUT_FILENO, in, 1000);
-	if (car == -1)
-		return (0);
-	while (car != 0)
+	car = 0;
+	save = read_stdin(save, car, in);
+	if (!save)
 	{
-		save = ft_strjoin(save, in);
-		car = read(STDOUT_FILENO, in, 1000);
-		if (car == -1)
-			return (0);
+		free(save);
+		return (0);
 	}
 	if (save[ft_strlen(save) - 1] != '\n')
 		return (0);
