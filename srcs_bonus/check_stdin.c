@@ -6,7 +6,7 @@
 /*   By: embedois <embedois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:57:06 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/23 20:05:37 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/25 13:51:14 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	int	i;
+	int		i;
 	char	*array;
 
 	i = 0;
 	if (!s1)
 	{
 		array = malloc(sizeof(char) * (ft_strlen(s2) + 1));
+		if (!array)
+			return (NULL);
 		while (s2[i])
 		{
 			array[i] = s2[i];
@@ -45,16 +47,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	array[i] = '\0';
 	return (array);
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	size_t	i;
-
-	i = 0;
-	while (s1[i] == s2[i] && s1[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
 t_stacks	resolve(t_stacks s, char *str)
@@ -142,14 +134,19 @@ int	check_moves(t_stacks s, char **splited, char *save)
 int	check_stdin(t_stacks s)
 {
 	char	in[1000];
-	int	car;
+	int		car;
 	char	*save;
 	char	**splited;
 
+	//MAC ?
+	save = malloc(sizeof(char));
+	if (!save)
+		return (0);
+	save[0] = '\0';
 	car = read(STDOUT_FILENO, in, 1000);
 	if (car == -1)
 		return (0);
-	while (car)
+	while (car != 0)
 	{
 		save = ft_strjoin(save, in);
 		car = read(STDOUT_FILENO, in, 1000);
@@ -159,11 +156,9 @@ int	check_stdin(t_stacks s)
 	if (save[ft_strlen(save) - 1] != '\n')
 		return (0);
 	splited = ft_split(save, '\n');
+	free(save);
 	if (!splited)
-	{
-		ft_free_split(splited, n_words(save, '\n'));
-		return (0);
-	}
+		return (ft_free_split2(splited, n_words(save, '\n')));
 	if (!check_moves(s, splited, save))
 		return (0);
 	return (1);

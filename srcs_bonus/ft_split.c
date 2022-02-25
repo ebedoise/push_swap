@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 15:53:55 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/09 15:58:38 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/25 13:07:20 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,17 @@ char	**ft_free_split(char **array, int j)
 	}
 	free(array);
 	return (NULL);
+}
+
+int	ft_free_split2(char **array, int j)
+{
+	while (j >= 0)
+	{
+		free(array[j]);
+		j--;
+	}
+	free(array);
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)

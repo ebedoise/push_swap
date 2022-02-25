@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:07:34 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/23 20:10:32 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/25 13:07:08 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int			n_words(char const *s, char c);
 int			ft_atoi(const char *str);
 
 int			check_stdin(t_stacks s);
+int			ft_strcmp(char *s1, char *s2);
+int			ft_free_split2(char **array, int j);
 
 t_stacks	solver(t_stacks s);
 t_stacks	solve2(t_stacks s);

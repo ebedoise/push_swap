@@ -6,11 +6,21 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:05:55 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/09 17:52:28 by embedois         ###   ########.fr       */
+/*   Updated: 2022/02/25 13:01:08 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/push_swap.h"
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	size_t	i;
+
+	i = 0;
+	while (s1[i] == s2[i] && s1[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
 
 int	is_int(char *str)
 {
