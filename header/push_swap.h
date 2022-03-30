@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:07:34 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/25 14:15:32 by embedois         ###   ########.fr       */
+/*   Updated: 2022/03/30 10:28:18 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,5 @@ t_stacks	ft_push(t_stacks s, char c);
 t_stacks	ft_rotate(t_stacks s, char c);
 t_stacks	ft_reverse_rotate(t_stacks s, char c);
 t_stacks	ft_putmove(char *str, t_stacks s, int n);
+t_stacks	smallest(t_stacks s);
 #endif
