@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:43:31 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/25 13:24:40 by embedois         ###   ########.fr       */
+/*   Updated: 2022/03/30 14:13:03 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,7 @@ int	main(int ac, char **av)
 	if (!s.a || !s.b)
 		return (0);
 	if (!check_stdin(s))
-	{
-		free(s.a);
-		free(s.b);
-		return (print_error());
-	}
+		print_error();
 	free(s.a);
 	free(s.b);
 	return (0);

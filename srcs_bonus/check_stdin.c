@@ -6,7 +6,7 @@
 /*   By: embedois <embedois@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 14:57:06 by embedois          #+#    #+#             */
-/*   Updated: 2022/02/25 14:29:28 by embedois         ###   ########.fr       */
+/*   Updated: 2022/03/30 14:27:53 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,126 +14,80 @@
 
 t_stacks	resolve(t_stacks s, char *str)
 {
-	if (ft_strcmp(str, "sa") == 0)
+	if (ft_strcmp(str, "sa\n") == 0)
 		return (ft_swap(s, 'a'));
-	else if (ft_strcmp(str, "sb") == 0)
+	else if (ft_strcmp(str, "sb\n") == 0)
 		return (ft_swap(s, 'b'));
-	else if (ft_strcmp(str, "ss") == 0)
+	else if (ft_strcmp(str, "ss\n") == 0)
 		return (ft_swap(s, 's'));
-	else if (ft_strcmp(str, "pa") == 0)
+	else if (ft_strcmp(str, "pa\n") == 0)
 		return (ft_push(s, 'a'));
-	else if (ft_strcmp(str, "pb") == 0)
+	else if (ft_strcmp(str, "pb\n") == 0)
 		return (ft_push(s, 'b'));
-	else if (ft_strcmp(str, "ra") == 0)
+	else if (ft_strcmp(str, "ra\n") == 0)
 		return (ft_rotate(s, 'a'));
-	else if (ft_strcmp(str, "rb") == 0)
+	else if (ft_strcmp(str, "rb\n") == 0)
 		return (ft_rotate(s, 'b'));
-	else if (ft_strcmp(str, "rr") == 0)
+	else if (ft_strcmp(str, "rr\n") == 0)
 		return (ft_rotate(s, 'r'));
-	else if (ft_strcmp(str, "rra") == 0)
+	else if (ft_strcmp(str, "rra\n") == 0)
 		return (ft_reverse_rotate(s, 'a'));
-	else if (ft_strcmp(str, "rrb") == 0)
+	else if (ft_strcmp(str, "rrb\n") == 0)
 		return (ft_reverse_rotate(s, 'b'));
-	else if (ft_strcmp(str, "rrr") == 0)
+	else if (ft_strcmp(str, "rrr\n") == 0)
 		return (ft_reverse_rotate(s, 'r'));
 	return (s);
 }
 
 int	is_move(char *str)
 {
-	if (ft_strcmp(str, "sa") == 0)
+	if (ft_strcmp(str, "sa\n") == 0)
 		return (1);
-	else if (ft_strcmp(str, "sb") == 0)
+	else if (ft_strcmp(str, "sb\n") == 0)
 		return (1);
-	else if (ft_strcmp(str, "ss") == 0)
+	else if (ft_strcmp(str, "ss\n") == 0)
 		return (1);
-	else if (ft_strcmp(str, "pa") == 0)
+	else if (ft_strcmp(str, "pa\n") == 0)
 		return (1);
-	else if (ft_strcmp(str, "pb") == 0)
+	else if (ft_strcmp(str, "pb\n") == 0)
 		return (1);
-	else if (ft_strcmp(str, "ra") == 0)
+	else if (ft_strcmp(str, "ra\n") == 0)
 		return (1);
-	else if (ft_strcmp(str, "rb") == 0)
+	else if (ft_strcmp(str, "rb\n") == 0)
 		return (1);
-	else if (ft_strcmp(str, "rr") == 0)
+	else if (ft_strcmp(str, "rr\n") == 0)
 		return (1);
-	else if (ft_strcmp(str, "rra") == 0)
+	else if (ft_strcmp(str, "rra\n") == 0)
 		return (1);
-	else if (ft_strcmp(str, "rrb") == 0)
+	else if (ft_strcmp(str, "rrb\n") == 0)
 		return (1);
-	else if (ft_strcmp(str, "rrr") == 0)
+	else if (ft_strcmp(str, "rrr\n") == 0)
 		return (1);
 	return (0);
 }
 
-int	check_moves(t_stacks s, char **splited, char *save)
+int	check_stdin(t_stacks s)
 {
-	int	i;
+	char	*str;
 
-	i = 0;
-	while (splited[i])
+	str = get_next_line(0);
+	while (str)
 	{
-		if (!is_move(splited[i]))
+		if (!is_move(str))
 		{
-			ft_free_split(splited, n_words(save, '\n'));
+			free(str);
+			get_next_line(42);
 			return (0);
 		}
-		i++;
+		s = resolve(s, str);
+		free(str);
+		str = get_next_line(0);
 	}
-	i = 0;
-	while (splited[i])
-	{
-		s = resolve(s, splited[i]);
-		i++;
-	}
-	if (is_sorted(s) && !s.len_b)
+	free(str);
+	if (is_sorted(s) && s.len_b == 0)
 		ft_putstr("OK\n");
 	else
 		ft_putstr("KO\n");
-	ft_free_split(splited, n_words(save, '\n'));
-	return (1);
-}
-
-char	*read_stdin(char *save, int car, char in[1000])
-{
-	car = read(STDOUT_FILENO, in, 1000);
-	if (car == -1)
-		return (NULL);
-	while (car)
-	{
-		save = ft_strjoin(save, in, car);
-		car = read(STDOUT_FILENO, in, 1000);
-		if (car == -1)
-			return (NULL);
-	}
-	return (save);
-}
-
-int	check_stdin(t_stacks s)
-{
-	char	in[1000];
-	int		car;
-	char	*save;
-	char	**splited;
-
-	save = malloc(sizeof(char));
-	if (!save)
-		return (0);
-	save[0] = '\0';
-	car = 0;
-	save = read_stdin(save, car, in);
-	if (!save)
-	{
-		free(save);
-		return (0);
-	}
-	if (save[ft_strlen(save) - 1] != '\n')
-		return (0);
-	splited = ft_split(save, '\n');
-	free(save);
-	if (!splited)
-		return (ft_free_split2(splited, n_words(save, '\n')));
-	if (!check_moves(s, splited, save))
-		return (0);
+	get_next_line(42);
 	return (1);
 }

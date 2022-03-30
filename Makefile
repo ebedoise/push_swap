@@ -1,5 +1,5 @@
 SRCS		= $(addprefix ${FOLDER}/, push_swap.c parsing.c print.c ft_atoi.c ft_split.c ft_substr.c moves.c solver.c solve5.c bigsolver.c bigsolver_bis.c LIS.c)
-SRCS_BONUS		= $(addprefix ${FOLDER_BONUS}/, checker.c parsing.c print.c ft_atoi.c ft_split.c ft_substr.c moves.c check_stdin.c ft_strjoin.c)
+SRCS_BONUS		= $(addprefix ${FOLDER_BONUS}/, checker.c parsing.c print.c ft_atoi.c ft_split.c ft_substr.c moves.c check_stdin.c get_next_line.c get_next_line_utils.c)
 OBJS		= ${SRCS:.c=.o}
 OBJS_BONUS		= ${SRCS_BONUS:.c=.o}
 NAME		= push_swap

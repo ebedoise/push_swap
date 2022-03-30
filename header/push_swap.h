@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:07:34 by embedois          #+#    #+#             */
-/*   Updated: 2022/03/30 10:28:18 by embedois         ###   ########.fr       */
+/*   Updated: 2022/03/30 14:13:07 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "get_next_line.h"
 
 typedef struct s_stacks
 {
-	int	*a;
-	int	*b;
-	int	len_a;
-	int	len_b;
+	int		*a;
+	int		*b;
+	int		len_a;
+	int		len_b;
 }	t_stacks;
 
 size_t		ft_strlen(char const *str);
@@ -49,8 +50,6 @@ int			*ft_cpy(int *tmp, int *a, int len);
 int			is_lowest(int *array, int len);
 int			n_words(char const *s, char c);
 int			ft_atoi(const char *str);
-
-char		*ft_strjoin(char *s1, char *s2, size_t car);
 
 int			check_stdin(t_stacks s);
 int			ft_strcmp(char *s1, char *s2);

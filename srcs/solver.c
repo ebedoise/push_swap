@@ -6,7 +6,7 @@
 /*   By: embedois <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 13:07:45 by embedois          #+#    #+#             */
-/*   Updated: 2022/03/30 10:35:13 by embedois         ###   ########.fr       */
+/*   Updated: 2022/03/30 14:37:30 by embedois         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ t_stacks	solve3(t_stacks s)
 
 t_stacks	solve4(t_stacks s)
 {
-
 	s = smallest(s);
 	s = ft_putmove("pb\n", s, 5);
 	s = solve3(s);
